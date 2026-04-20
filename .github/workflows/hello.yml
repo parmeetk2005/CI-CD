@@ -22,7 +22,7 @@ name: My First Workflow
 #         run: echo "Goodbye , Parmeet Kaur"
 
 on: Push
-Jobs:
+jobs:
   run-test:
     runs-on: ubuntu-latest
     
