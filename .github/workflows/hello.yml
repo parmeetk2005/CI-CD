@@ -21,17 +21,28 @@ name: My First Workflow
 #       - name: Print Names
 #         run: echo "Goodbye , Parmeet Kaur"
 
-on: Push
-jobs:
-  run-test:
-    runs-on: ubuntu-latest
+# on: Push
+# jobs:
+#   run-test:
+#     runs-on: ubuntu-latest
     
-    steps:
-      -run: echo "test is running"
-      -run: echo "test successful"
+#     steps:
+#       -run: echo "test is running"
+#       -run: echo "test successful"
   
-  deploy_App:
-    needs: run_test
+#   deploy_App:
+#     needs: run_test
+#     runs-on: ubuntu-latest
+#     steps:
+#       -run: echo "workflow successful"
+
+
+on: push
+jobs:
+  test:
     runs-on: ubuntu-latest
     steps:
-      -run: echo "workflow successful"
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: List files
+        run: ls
