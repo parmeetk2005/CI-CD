@@ -1,4 +1,4 @@
-# name: My First Workflow
+name: My First Workflow
 
 # on:
 #   push:
@@ -21,17 +21,42 @@
 #       - name: Print Names
 #         run: echo "Goodbye , Parmeet Kaur"
 
-on: Push
-Jobs:
-  run-test:
-    runs-on: ubuntu-latest
+# on: Push
+# jobs:
+#   run-test:
+#     runs-on: ubuntu-latest
     
-    steps:
-      -run: echo "test is running"
-      -run: echo "test successful"
+#     steps:
+#       -run: echo "test is running"
+#       -run: echo "test successful"
   
-  deploy_App:
-    needs: run_test
+#   deploy_App:
+#     needs: run_test
+#     runs-on: ubuntu-latest
+#     steps:
+#       -run: echo "workflow successful"
+
+
+# on: push
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#       - name: List files
+#         run: ls
+
+on: push
+jobs: 
+  test:
     runs-on: ubuntu-latest
     steps:
-      -run: echo "workflow successful"
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Check Node version
+        run: node -v
